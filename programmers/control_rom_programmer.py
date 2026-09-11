@@ -1,4 +1,4 @@
-# PROGRAMS THE CONTROL ROM
+# programs the control rom
 from instructions import *
 
 clearRom("rom_content/control_rom.txt")

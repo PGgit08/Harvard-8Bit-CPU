@@ -1,6 +1,6 @@
 from functools import reduce
 
-### ROM/FILE EDITING FUNCTIONS ###
+# rom/file editing functions
 def readContents(file): 
     with open(file, "r") as contents:
         lines = contents.readlines()
@@ -30,7 +30,7 @@ def hexOR(*hexNums):
     return hex(or_result)
 
 
-# CONTROL LINES
+# control lines
 A_IN = '0x0020'
 B_IN = '0x0040'
 A_OUT = '0xA000'
@@ -90,7 +90,7 @@ class Instruction:
             writeRom("rom_content/control_rom.txt", self.stepAddress(flag), data)
 
 
-# INSTRUCTION SET
+# instruction set
 INSTRUCTIONS = [
     Instruction("NOP", '0b00000000', [SEQ_CLR]),
     

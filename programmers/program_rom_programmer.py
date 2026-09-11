@@ -1,4 +1,4 @@
-# ASSEMBLER
+# assembler
 from instructions import *
 
 # open assembly file
