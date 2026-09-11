@@ -14,16 +14,14 @@ def writeContents(file, lines):
         contents.writelines(lines)
         contents.close()
 
-
 def clearRom(file):
     writeContents(file, ["v2.0 raw\n"] + (["0000\n"] * (2**16)))
-    print("ROM CLEARED!!!")
+    print("ROM CLEARED")
 
 def writeRom(file, binAddr, hexData):
     contents = readContents(file)
     contents[int(binAddr, 2) + 1] = hexData.replace('0x', '') + '\n'
     writeContents(file, contents)
-    
 
 # hexOR function
 def hexOR(*hexNums):

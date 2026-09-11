@@ -2,7 +2,7 @@
 from instructions import *
 
 # open assembly file
-file_name = input("Name of assembly file: ")
+file_name = input("name of assembly file (with .asm): ")
 program_rom = "rom_content/" + file_name.replace(".asm", '') + "_rom.txt"
 
 # create rom file
@@ -18,15 +18,16 @@ instruction_table = {}
 for instruction in INSTRUCTIONS:
     instruction_table[instruction.name] = hex(int(instruction.bin, 2)).replace("0x", '')
 
-
 addr = 0
 
 clearRom(program_rom)
 
-for i in range(len(readContents("assembly/" + file_name))):
-    line = readContents("assembly/" + file_name)[i].replace("\n", "")
+lines = readContents("assembly/" + file_name)
 
-    # Comment/Blank Checks
+for i in range(len(lines)):
+    line = lines[i].replace("\n", "")
+
+    # comment/blank checks
     if line == '' or '#' in line:
         continue
 
@@ -39,6 +40,8 @@ for i in range(len(readContents("assembly/" + file_name))):
 
     hexCode = instruction_table[code]
 
-    writeRom(program_rom, bin(addr), hexCode+val)
+    writeRom(program_rom, bin(addr), hexCode + val)
 
     addr += 1
+
+print("PROGRAM ROM PROGRAMMED SUCCESSFULLY")
